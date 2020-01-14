@@ -40,28 +40,26 @@
 <style lang="less" scoped>
 .app-container {
     padding-top: 40px;
+    padding-bottom: 50px;
     // 解决页面左右切换导致header和tabbar移动的问题
     overflow-x: hidden;
 }
 
-.v-enter{
-  opacity: 0;
-  // 当前页面向左侧移动100%的宽度
-  transform: translateX(100%);
+.v-enter {
+    opacity: 0;
+    // 当前页面向左侧移动100%的宽度
+    transform: translateX(100%);
 }
 
-.v-leave-to{
-  opacity: 0;
-  // 当前页面离开时的位置为-100%
-  transform: translateX(-100%);
-  // 解决页面切换上下移动的问题
-  position: absolute;
+.v-leave-to {
+    opacity: 0;
+    // 当前页面离开时的位置为-100%
+    transform: translateX(-100%);
+    // 解决页面切换上下移动的问题
+    position: absolute;
 }
 .v-enter-active,
-.v-leave-active{
-  transition: all 0.2s ease;
+.v-leave-active {
+    transition: all 0.2s ease;
 }
-
-
-
 </style>

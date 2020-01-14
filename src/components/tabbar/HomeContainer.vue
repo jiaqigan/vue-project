@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-      <h3>HomeContainer</h3>
+
       <!-- 轮播图区域 -->
       <mt-swipe :auto="4000">
         <!-- 如果在组件中使用 v-for，一定要使用 key -->
@@ -11,25 +11,30 @@
 
       <!-- 九宫格 改造 六宫格 -->
       <ul class="mui-table-view mui-grid-view mui-grid-9">
-        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+          <router-link to="/home/newslist">
           <img src="../../images/menu1.png" alt="">
-      		<div class="mui-media-body">新闻资讯</div></a></li>
-      	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+      		<div class="mui-media-body">新闻资讯</div></router-link></li>
+      	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+          <router-link to="/home">
           <img src="../../images/menu2.png" alt="">
-          <span class="mui-badge">5</span>
-      		<div class="mui-media-body">图片分享</div></a></li>
-      	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+      		<div class="mui-media-body">图片分享</div></router-link></li>
+      	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+          <router-link to="/home">
           <img src="../../images/menu3.png" alt="">
-      		<div class="mui-media-body">商品购买</div></a></li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+      		<div class="mui-media-body">商品购买</div></router-link></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+          <router-link to="/home">
           <img src="../../images/menu4.png" alt="">
-      		<div class="mui-media-body">留言反馈</div></a></li>
-      	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+      		<div class="mui-media-body">留言反馈</div></router-link></li>
+      	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+          <router-link to="/home">
           <img src="../../images/menu5.png" alt="">
-      		<div class="mui-media-body">视频专区</div></a></li>
-      	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+      		<div class="mui-media-body">视频专区</div></router-link></li>
+      	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+          <router-link to="/home">
           <img src="../../images/menu6.png" alt="">
-      		<div class="mui-media-body">联系我们</div></a></li>
+      		<div class="mui-media-body">联系我们</div></router-link></li>
         </ul>
     </div>
 </template>
@@ -37,7 +42,7 @@
 <script>
 import {
   Toast
-} from "mint-ui"
+} from "mint-ui";
 
 export default {
   data() {
@@ -52,7 +57,8 @@ export default {
   methods: {
     getSlideshow() {
       // 获取轮播图数据的方法
-      this.$http.get('http://www.liulongbin.top:3005/api/getlunbo').then(result => {
+      // vue-resource 前不能带'/'
+      this.$http.get('api/getlunbo').then(result => {
         // console.log(result.body);
         // 如果 status = 0，证明请求成功
         if (result.body.status === 0) {
