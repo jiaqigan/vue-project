@@ -20,56 +20,58 @@
 <script>
 import comment from "@/components/subcomponents/comment"
 
-import { Toast } from "mint-ui";
+import {
+  Toast
+} from "mint-ui";
 export default {
-  data(){
-    return{
+  data() {
+    return {
       // 将url中传递来的id，挂载在data上，方便以后调用
       id: this.$route.params.id,
-      newsinfo:{} //新闻对象
+      newsinfo: {} //新闻对象
     }
   },
-  created(){
+  created() {
     this.getNewsInfo();
   },
-  methods:{
-    getNewsInfo(){ //获取新闻详情
-      this.$http.get("api/getnew/" + this.id).then(result =>　{
-      if (result.body.status === 0) {
-        // console.log(this);
-        this.newsinfo = result.body.message[0];
-      } else {
-        Toast("新闻详情获取失败");
-      }
-    })
+  methods: {
+    getNewsInfo() { //获取新闻详情
+      this.$http.get("api/getnew/" + this.id).then(result => {
+        if (result.body.status === 0) {
+          // console.log(this);
+          this.newsinfo = result.body.message[0];
+        } else {
+          Toast("新闻详情获取失败");
+        }
+      })
     }
   },
-  components:{
+  components: {
     // 用来注册子组件
-    "comment-box":comment
+    "comment-box": comment
   }
 }
 </script>
 
 <style lang="less">
-.newsinfo-container{
-  padding: 0 4px;
-  .title{
-    font-size: 16px;
-    text-align: center;
-    margin: 15px 0;
-    color: red;
-  }
-  .subtitle{
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-    color: #226aff;
-  }
-  .content{
-    // img{
-    //   width: 100%;
-    // }
-  }
+.newsinfo-container {
+    padding: 0 4px;
+    .title {
+        font-size: 16px;
+        text-align: center;
+        margin: 15px 0;
+        color: red;
+    }
+    .subtitle {
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        color: #226aff;
+    }
+    .content {
+        // img{
+        //   width: 100%;
+        // }
+    }
 }
 </style>
