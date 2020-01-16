@@ -8,16 +8,13 @@
     }],
     "stage-2"
   ],
-  "plugins": ["transform-vue-jsx", "transform-runtime", ["component", [
-    {
+  "plugins": ["transform-vue-jsx", "transform-runtime",
+    ["component", [{
       "libraryName": "mint-ui",
       "style": true
-    }
-  ]]],
-  "env": {
-    "test": {
-      "presets": ["env", "stage-2"],
-      "plugins": ["transform-vue-jsx", "transform-es2015-modules-commonjs", "dynamic-import-node"]
-    }
-  }
+    }]], "transform-remove-strict-mode"
+  ],
+  "ignore": [
+    "./src/mui/js/*.js"
+  ]
 }

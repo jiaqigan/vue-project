@@ -2,13 +2,7 @@
   <div class="">
 
       <!-- 轮播图区域 -->
-      <mt-swipe :auto="4000">
-        <!-- 如果在组件中使用 v-for，一定要使用 key -->
-        <mt-swipe-item v-for="item in slideshowList" :key="item.id">
-          <img :src="item.img" alt="">
-        </mt-swipe-item>
-      </mt-swipe>
-
+      <slideshow :slideshowList="slideshowList" :isfull="true"></slideshow>
       <!-- 九宫格 改造 六宫格 -->
       <ul class="mui-table-view mui-grid-view mui-grid-9">
         <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -16,11 +10,11 @@
           <img src="../../images/menu1.png" alt="">
       		<div class="mui-media-body">新闻资讯</div></router-link></li>
       	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-          <router-link to="/home">
+          <router-link to="/home/photolist">
           <img src="../../images/menu2.png" alt="">
       		<div class="mui-media-body">图片分享</div></router-link></li>
       	<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-          <router-link to="/home">
+          <router-link to="/home/goodslist">
           <img src="../../images/menu3.png" alt="">
       		<div class="mui-media-body">商品购买</div></router-link></li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -40,9 +34,8 @@
 </template>
 
 <script>
-import {
-  Toast
-} from "mint-ui";
+import { Toast } from "mint-ui";
+import slideshow from "@/components/subcomponents/slideshow"
 
 export default {
   data() {
@@ -69,6 +62,9 @@ export default {
         }
       });
     }
+  },
+  components:{
+    slideshow
   }
   // 使用 vue-resource 的 this.$http.get 获取数据
   // 获取的数据要保存到 data 中
@@ -78,24 +74,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.mint-swipe {
-    height: 200px;
-    .mint-swipe-item {
-        &:nth-child(1) {
-            background-color: red;
-        }
-        &:nth-child(2) {
-            background-color: green;
-        }
-        &:nth-child(3) {
-            background-color: green;
-        }
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-}
 
 .mui-grid-view.mui-grid-9 {
     background-color: #fff;

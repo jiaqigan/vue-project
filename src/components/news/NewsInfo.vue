@@ -23,6 +23,7 @@ import comment from "@/components/subcomponents/comment"
 import {
   Toast
 } from "mint-ui";
+
 export default {
   data() {
     return {
@@ -38,7 +39,6 @@ export default {
     getNewsInfo() { //获取新闻详情
       this.$http.get("api/getnew/" + this.id).then(result => {
         if (result.body.status === 0) {
-          // console.log(this);
           this.newsinfo = result.body.message[0];
         } else {
           Toast("新闻详情获取失败");

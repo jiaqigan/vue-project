@@ -11,8 +11,12 @@ import CartContainer from "@/components/tabbar/CartContainer"
 import SearchContainer from "@/components/tabbar/SearchContainer"
 import NewList from "@/components/news/NewsList"
 import NewsInfo from "@/components/news/NewsInfo"
-
-
+import PhotoList from "@/components/photos/PhotoList"
+import PhotoInfo from "@/components/photos/PhotoInfo"
+import GoodsList from "@/components/goods/GoodsList"
+import GoodsInfo from "@/components/goods/GoodsInfo"
+import GoodsDesc from "@/components/goods/GoodsDesc"
+import GoodsComment from "@/components/goods/GoodsComment"
 
 Vue.use(Router)
 
@@ -58,6 +62,36 @@ export default new Router({
       path: '/home/newsinfo/:id',
       name: 'newsinfo',
       component: NewsInfo
+    },
+    {
+      path: '/home/photolist',
+      name: 'photolist',
+      component: PhotoList
+    },
+    {
+      path: '/home/photoinfo/:id',
+      name: 'photoinfo',
+      component: PhotoInfo
+    },
+    {
+      path: '/home/goodslist',
+      name: 'goodslist',
+      component: GoodsList
+    },
+    {
+      path: '/home/goodsinfo/:id',
+      name: 'goodsinfo',
+      component: GoodsInfo
+    },
+    {
+      path: '/home/goodsdesc/:id',
+      name: 'goodsdesc',
+      component: GoodsDesc
+    },
+    {
+      path: '/home/goodscomment/:id',
+      name: 'goodscomment',
+      component: GoodsComment
     }
   ],
   linkActiveClass: "mui-active" //覆盖默认的路由高亮的类
