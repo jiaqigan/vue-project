@@ -2,7 +2,9 @@
 <div class="app-container">
   <!-- 顶部 header 区域 -->
   <mt-header fixed title="Vue Project">
-<!-- <button type="button" name="button" @click="backward"> < 返回 </button> -->
+    <span slot="left" @click="goBack" v-show="flag">
+      <mt-button icon="back">返回</mt-button>
+    </span>
   </mt-header>
 
 
@@ -23,7 +25,7 @@
     </router-link>
     <router-link class="mui-tab-item-my" to="/cart">
       <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-        <span class="mui-badge" id="badge">0</span>
+        <span class="mui-badge" id="badge">{{$store.getters.getAllCount}}</span>
       </span>
       <span class="mui-tab-label">购物车</span>
     </router-link>
@@ -41,13 +43,29 @@
 export default {
   data() {
     return {
-
+      flag: false
     }
   },
   created() {
+    // 在页面创建后，只要路由不为首页，就显示返回按钮
+    this.flag = this.$route.path === "/home"? false: true
   },
   methods: {
-
+    goBack(){
+      // 点击后退
+      this.$router.go(-1);
+    }
+  },
+  watch:{
+    // 监听路由的改变
+    "$route.path": function(newVal){
+      // 如果路由为 /home 则隐藏返回按键
+      if (newVal === '/home') {
+        this.flag = false;
+      }else {
+        this.flag = true;
+      }
+    }
   }
 }
 </script>
